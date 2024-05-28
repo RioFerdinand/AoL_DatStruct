@@ -12,7 +12,7 @@ struct data{
     struct data *prev;
 };
 
-struct node *head, *newnode, *temp;
+struct data *head, *newnode, *temp;
 //Menu 
 void menu(){
     printf("================================================");
@@ -27,10 +27,10 @@ void createData(){
     newnode = (struct data*)malloc(sizeof(struct data));
     printf("Masukan Nama Barang: ");
     scanf("%s", newnode->name);
-    printf("\nJumlah Barang: ");
-    scanf("%d", newnode->quantity);
-    printf("\nBerat Barang: ");
-    scanf("%d", newnode->weight);
+    printf("Jumlah Barang: ");
+    scanf("%d", &newnode->quantity);
+    printf("Berat Barang: ");
+    scanf("%d", &newnode->weight);
     printf("Category Barang: ");
     scanf("%s", newnode->category);
     newnode->prev = NULL;
@@ -41,7 +41,19 @@ void input(){
 }
 
 void deleteData(){
-    
+
+}
+
+void display(){
+    if (head == NULL){
+        printf("Inventory Data is empty\n");
+    }else{
+        printf("Selet view method: ");
+        printf("1. View all\n");
+        printf("2. View by name\n");
+        printf("3. View by category\n");
+  
+    }
 }
 
 int main(){

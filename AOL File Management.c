@@ -21,6 +21,12 @@ void menu(){
     printf("================================================");
 
 }
+void createData(){
+    
+}
+void input(){
+    
+}
 
 int main(){
     int m;
@@ -32,6 +38,7 @@ int main(){
         }while(m > 9);
         switch(m){
             case 1:
+
                 break;
             case 2:
                 break;

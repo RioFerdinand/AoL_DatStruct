@@ -7,10 +7,12 @@ struct data{
     int quantity;
     char name[MAX];
     char category[MAX];
+    int weight;
     struct data *next;    
+    struct data *prev;
 };
 
-struct node *head, *node, *temp;
+struct node *head, *newnode, *temp;
 //Menu 
 void menu(){
     printf("================================================");
@@ -22,9 +24,23 @@ void menu(){
 
 }
 void createData(){
-    
+    newnode = (struct data*)malloc(sizeof(struct data));
+    printf("Masukan Nama Barang: ");
+    scanf("%s", newnode->name);
+    printf("\nJumlah Barang: ");
+    scanf("%d", newnode->quantity);
+    printf("\nBerat Barang: ");
+    scanf("%d", newnode->weight);
+    printf("Category Barang: ");
+    scanf("%s", newnode->category);
+    newnode->prev = NULL;
+    newnode->next = NULL;
 }
 void input(){
+    createData();
+}
+
+void deleteData(){
     
 }
 

@@ -38,13 +38,45 @@ void createData(){
 }
 void input(){
     createData();
+    if (head == NULL) {
+        head = newnode;
+    } else {
+        temp = head;
+        while (temp->next != NULL) {
+            temp = temp->next;
+        }
+        temp->next = newnode;
+        newnode->prev = temp;
+    }
+
 }
 
 void deleteData(){
 
 }
-
+void displayAll(){
+    temp = head;
+    while(temp!=NULL){
+        printf("Name: %s, Quantity: %d, Weight: %d, Category: %s\n",
+        temp->name, temp->quantity, temp->weight, temp->category);
+        temp = temp->next;
+    }
+}
+void displayName(){
+    temp = head;
+    char ref[MAX];
+    printf("Input the name of the item");
+    scanf("%s", ref);
+    while (temp != NULL){
+        if(strcmp(temp->name, ref)==0){
+           printf("Name: %s, Quantity: %d, Weight: %d, Category: %s\n",
+            temp->name, temp->quantity, temp->weight, temp->category);
+        }
+        temp = temp->next;
+    }
+}
 void display(){
+    int m;  
     if (head == NULL){
         printf("Inventory Data is empty\n");
     }else{
@@ -52,6 +84,14 @@ void display(){
         printf("1. View all\n");
         printf("2. View by name\n");
         printf("3. View by category\n");
+        switch(m){
+            case 1:
+                displayAll();
+                break;
+            case 2:
+                displayName();
+                break;
+        }
   
     }
 }

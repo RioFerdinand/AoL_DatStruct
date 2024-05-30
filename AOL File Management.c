@@ -52,52 +52,9 @@ void createData() {
     newnode->next = NULL;
 }
 
-void insertDepan(){
-    createData();
-    if (head == NULL) {
-        head = newnode;
-    } else {
-        newnode->next = head;
-        head->prev = newnode;
-        head = newnode;
-    }
-    printf("Posisi barang telah masuk di depan\n");
-}
 
-void insertTengah(){
-    int pos, i;
-    printf("Masukan posisi barang masuk (dari 1): ");
-    scanf("%d", &pos);
 
-    if (pos == 1) {
-        insertDepan();
-        return;
-    }
-
-    createData();
-    temp = head;
-    for (i = 1; i < pos - 1; i++) {
-        if (temp != NULL) {
-            temp = temp->next;
-        } else {
-            printf("Posisi barang tidak ditemukan.\n");
-            free(newnode);
-            return;
-        }
-    }
-
-    newnode->next = temp->next;
-    newnode->prev = temp;
-
-    if (temp->next != NULL) {
-        temp->next->prev = newnode;
-    }
-
-    temp->next = newnode;
-    printf("Posisi barang telah masuk di tengah.\n");
-}
-
-void insertBelakang(){
+void inputData(){
     createData();
     if (head == NULL) {
         head = newnode;
@@ -109,23 +66,9 @@ void insertBelakang(){
         temp->next = newnode;
         newnode->prev = temp;
     }
-    printf("Posisi barang telah masuk di belakang.\n");
+    printf("Barang telah masuk ke dalam database\n");
 }
 
-void input(){
-    createData();
-    if (head == NULL) {
-        head = newnode;
-    } else {
-        temp = head;
-        while (temp->next != NULL) {
-            temp = temp->next;
-        }
-        temp->next = newnode;
-        newnode->prev = temp;
-    }
-
-}
 
 void deleteData(){
     
@@ -182,6 +125,7 @@ int main(){
         }while(m > 9);
         switch(m){
             case 1:
+                inputData();
                 break;
             case 2:
                 break;

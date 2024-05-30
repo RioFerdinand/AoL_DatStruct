@@ -52,13 +52,13 @@ void input(){
 }
 
 void deleteData(){
-
+    
 }
 void displayAll(){
     temp = head;
+     printf("Name\t Quantity\t Weight\t Category\t\n");
     while(temp!=NULL){
-        printf("Name: %s, Quantity: %d, Weight: %d, Category: %s\n",
-        temp->name, temp->quantity, temp->weight, temp->category);
+        printf("%s\t %d\t %d\t %s\n",temp->name, temp->quantity, temp->weight, temp->category);
         temp = temp->next;
     }
 }
@@ -67,10 +67,10 @@ void displayName(){
     char ref[MAX];
     printf("Input the name of the item");
     scanf("%s", ref);
+    printf("Name\t Quantity\t Weight\t Category\t\n");
     while (temp != NULL){
         if(strcmp(temp->name, ref)==0){
-           printf("Name: %s, Quantity: %d, Weight: %d, Category: %s\n",
-            temp->name, temp->quantity, temp->weight, temp->category);
+           printf("%s\t %d\t %d\t %s\n",temp->name, temp->quantity, temp->weight, temp->category);
         }
         temp = temp->next;
     }

@@ -12,7 +12,7 @@ struct data {
     struct data *prev;
 };
 
-struct data *head, *newnode, *temp;
+struct data *head = NULL, *newnode, *temp;
 //Menu 
 void menu(){
     printf("================================================\n");
@@ -20,6 +20,7 @@ void menu(){
     printf("1. Input Data\n");
     printf("2. View Data\n");
     printf("3. Delete Data\n");
+    printf("0. Exit\n");
     printf("================================================\n");
 
 }

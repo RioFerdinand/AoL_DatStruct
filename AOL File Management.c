@@ -31,12 +31,6 @@ void createData() {
     scanf("%d", &newnode->quantity);
     printf("Berat Barang: ");
     scanf("%d", &newnode->weight);
-    printf("\nJumlah Barang: ");
-    scanf("%d", &newnode->quantity);
-    printf("\nBerat Barang: ");
-    scanf("%d", &newnode->weight);
-    printf("Category Barang: ");
-    scanf("%s", newnode->category);
     newnode->prev = NULL;
     newnode->next = NULL;
 }
@@ -101,7 +95,7 @@ void display(){
     if (head == NULL){
         printf("Inventory Data is empty\n");
     }else{
-        printf("Selet view method: ");
+        printf("Selet view method: \n");
         printf("1. View all\n");
         printf("2. View by name\n");
         printf("3. View by category\n");

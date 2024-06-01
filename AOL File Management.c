@@ -83,6 +83,19 @@ void displayName(){
         temp = temp->next;
     }
 }
+void displayCategory() {
+    temp = head;
+    char ref[MAX];
+    printf("Input the category of the item: ");
+    scanf("%s", ref);
+    printf("Name\t Quantity\t Weight\t Category\t\n");
+    while (temp != NULL) {
+        if (strcmp(temp->category, ref) == 0) {
+            printf("%s\t %d\t %d\t %s\n", temp->name, temp->quantity, temp->weight, temp->category);
+        }
+        temp = temp->next;
+    }
+}
 void display(){
     int m;  
     if (head == NULL){
@@ -98,6 +111,9 @@ void display(){
                 break;
             case 2:
                 displayName();
+                break;
+            case 3:
+                displayCategory();
                 break;
         }
   

@@ -15,12 +15,12 @@ struct data {
 struct data *head, *newnode, *temp;
 //Menu 
 void menu(){
-    printf("================================================");
-    printf("================Warehouse Inventory=============");
-    printf("1. Input Data");
-    printf("2. View Data");
-    printf("3. Delete Data");
-    printf("================================================");
+    printf("================================================\n");
+    printf("================Warehouse Inventory=============\n");
+    printf("1. Input Data\n");
+    printf("2. View Data\n");
+    printf("3. Delete Data\n");
+    printf("================================================\n");
 
 }
 void createData() {
@@ -136,6 +136,7 @@ int main(){
                 display();
                 break;
             case 3:
+                deleteData();
                 break; 
         }
     }while(m != 0);

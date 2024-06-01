@@ -95,11 +95,13 @@ void display(){
     int m;  
     if (head == NULL){
         printf("Inventory Data is empty\n");
-    }else{
-        printf("Selet view method: \n");
-        printf("1. View all\n");
-        printf("2. View by name\n");
-        printf("3. View by category\n");
+    }
+    printf("Selet view method: \n");
+    printf("1. View all\n");
+    printf("2. View by name\n");
+    printf("3. View by category\n");
+    printf("Enter your input: ");
+    scanf("%s", &m);
         switch(m){
             case 1:
                 displayAll();
@@ -110,19 +112,18 @@ void display(){
             case 3:
                 displayCategory();
                 break;
+            
         }
-  
-    }
 }
+
 
 int main(){
     int m;
     do
     {
         menu();
-        do{
-            printf(">>");scanf("%d",&m);
-        }while(m > 9);
+        printf(">>");scanf("%d",&m);
+        
         switch(m){
             case 1:
                 inputData();
@@ -133,6 +134,10 @@ int main(){
             case 3:
                 deleteData();
                 break; 
+            case 0:
+                printf("Exiting...\n");
+            default:
+                printf("Invalid Choice");
         }
     }while(m != 0);
 }

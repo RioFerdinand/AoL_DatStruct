@@ -133,6 +133,7 @@ int main(){
                 inputData();
                 break;
             case 2:
+                display();
                 break;
             case 3:
                 break; 

@@ -23,17 +23,6 @@ void menu(){
     printf("================================================");
 
 }
-struct data *head = NULL, *newnode, *temp;
-// Menu
-void menu() {
-    printf("================================================\n");
-    printf("================Warehouse Inventory=============\n");
-    printf("1. Input Data\n");
-    printf("2. View Data\n");
-    printf("3. Delete Data\n");
-    printf("================================================\n");
-}
-
 void createData() {
     newnode = (struct data*)malloc(sizeof(struct data));
     printf("Masukan Nama Barang: ");

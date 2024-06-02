@@ -221,7 +221,10 @@ void display(){
 
 void exportToCSV(){
     FILE *fp = fopen("Inventory.csv","w");
-
+    if (fp == NULL){
+        printf("failed to make a file\n");
+        return -1;
+    }
     fprintf(fp, "Name,Quantity,Weight,Category\n");
     temp = head;
     while (temp != NULL) {

@@ -19,6 +19,7 @@ void menu(){
     printf("1. Input Data\n");
     printf("2. View Data\n");
     printf("3. Delete Data\n");
+    printf("4. Export Data to CSV\n");
     printf("0. Exit\n");
     printf("================================================\n");
 
@@ -218,6 +219,19 @@ void display(){
     }
 }
 
+void exportToCSV(){
+    FILE *fp = fopen("Inventory.csv","w");
+
+    fprintf(fp, "Name,Quantity,Weight,Category\n");
+    temp = head;
+    while (temp != NULL) {
+        fprintf(fp, "%s,%d,%d,%s\n", temp->name, temp->quantity, temp->weight, temp->category);
+        temp = temp->next;
+    }
+    
+    fclose(fp);
+    printf("Data has been exported to inventory.csv successfully.\n");
+}
 
 int main(){
   int m;
@@ -237,6 +251,9 @@ int main(){
         case 3:
            deleteData();
            break;
+        case 4:
+            exportToCSV();
+            break;
         case 0:
             printf("BYE BYE!\n");
             break;

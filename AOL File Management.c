@@ -15,7 +15,6 @@ struct data {
 struct data *head = NULL, *newnode, *temp;
 //Menu 
 void menu(){
-    printf("================================================\n");
     printf("================Warehouse Inventory=============\n");
     printf("1. Input Data\n");
     printf("2. View Data\n");
@@ -24,24 +23,39 @@ void menu(){
     printf("================================================\n");
 
 }
-void createData() {
-    newnode = (struct data*)malloc(sizeof(struct data));
+
+void inputData() {
+    char itemName[MAX];
+    int itemQuantity, itemWeight;
+    char itemCategory[MAX];
+
     printf("Masukan Nama Barang: ");
-    scanf("%s", newnode->name);
+    scanf("%s", itemName);
     printf("Jumlah Barang: ");
-    scanf("%d", &newnode->quantity);
+    scanf("%d", &itemQuantity);
     printf("Berat Barang: ");
-    scanf("%d", &newnode->weight);
+    scanf("%d", &itemWeight);
     printf("Kategori Barang: ");
-    scanf("%s", newnode->category);
+    scanf("%s", itemCategory);
+
+    temp = head;
+    while (temp != NULL) {
+        if (strcmp(temp->name, itemName) == 0) {
+            temp->quantity += itemQuantity;
+            printf("Jumlah barang telah diperbarui.\n");
+            return;
+        }
+        temp = temp->next;
+    }
+
+    newnode = (struct data*)malloc(sizeof(struct data));
+    strcpy(newnode->name, itemName);
+    newnode->quantity = itemQuantity;
+    newnode->weight = itemWeight;
+    strcpy(newnode->category, itemCategory);
     newnode->prev = NULL;
     newnode->next = NULL;
-}
 
-
-
-void inputData(){
-    createData();
     if (head == NULL) {
         head = newnode;
     } else {
@@ -55,10 +69,40 @@ void inputData(){
     printf("Barang telah masuk ke dalam database\n");
 }
 
+void deleteName() {
+    if (head == NULL) {
+        printf("No such item inside the inventory\n");
+        return;
+    }
+    char delName[MAX];
+    printf("Enter the name of the item to delete: ");
+    scanf("%s", delName);
 
-
-void deleteData(){
-    if (head == NULL){
+    temp = head;
+    while (temp != NULL && strcmp(temp->name, delName) != 0) {
+        temp = temp->next;
+    }
+    
+    if (temp == NULL) {
+        printf("Item not found\n");
+        return;
+    }
+    
+    if (temp->prev != NULL) {
+        temp->prev->next = temp->next;
+    } else {
+        head = temp->next;
+    }
+    
+    if (temp->next != NULL) {
+        temp->next->prev = temp->prev;
+    }
+    
+    free(temp);
+    printf("Item has been deleted successfully\n");
+}
+void checkout(){
+      if (head == NULL){
         printf("No such item inside the inventory\n");
         return;
     }
@@ -70,18 +114,42 @@ void deleteData(){
     }
     free(temp);
     printf("Item has been deleted successfully\n");
+}
+void deleteData(){
+       int c;  
+    if (head == NULL){
+        printf("Inventory Data is empty\n");
+        return;
+    }
+    printf("Select view method: \n");
+    printf("1. Check out\n");
+    printf("2. Delete by name\n");
+    printf("Enter your input: ");
+    scanf("%d", &c);
+    
+    switch(c){
+        case 1:
+            checkout();
+            break;
+        case 2:
+            deleteName();
+            break;
+        default:
+            printf("Invalid Choice\n");
+            break;
+    }
     
 }
-void displayAll(){
+void displayAll() {
     if (head == NULL) {
         printf("Inventory Data is empty\n");
         return;
     }
 
     temp = head;
-    printf("Name\t Quantity\t Weight\t Category\n");
-    while(temp != NULL){
-        printf("%s\t %d\t %d KG\t %d\t %s\n", temp->name, temp->quantity, temp->weight, temp->category);
+    printf("Name\t\tQuantity\tWeight\tCategory\n");
+    while (temp != NULL) {
+        printf("%s\t\t%d\t\t%d KG\t%s\n", temp->name, temp->quantity, temp->weight, temp->category);
         temp = temp->next;
     }
 }
@@ -160,20 +228,20 @@ int main(){
             scanf("%d", &m);   
                }while(m > 4);
     switch(m) {
-      case 1:
+        case 1:
            inputData();
            break;
-      case 2:
+        case 2:
            display();
            break;
-      case 3:
+        case 3:
            deleteData();
            break;
-      case 0:
-           printf("Invalid Choices\n");
-           break;
-      default:
-           printf("Waduh");
+        case 0:
+            printf("BYE BYE!\n");
+            break;
+        default:
+           printf("Waduh ga ada pilihannya cok\n");
            break;
     }
   }while(m !=0);

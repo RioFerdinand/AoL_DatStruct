@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define MAX 30
+#define MAX 1000
 // In each data, there is quantity, name, category
 struct data {
     int quantity;
@@ -31,15 +31,16 @@ void inputData() {
     char itemCategory[MAX];
 
     printf("Masukan Nama Barang: ");
-    scanf("%s", itemName);
+    scanf("%[^\n]", itemName);
     printf("Jumlah Barang: ");
     scanf("%d", &itemQuantity);
     printf("Berat Barang: ");
     scanf("%d", &itemWeight);
     printf("Kategori Barang: ");
-    scanf("%s", itemCategory);
+    scanf("%[^\n]", itemCategory);
 
     temp = head;
+    //mengecek apabila ada data yang sama, data akan diperbarui jumlahnya dan beratnya
     while (temp != NULL) {
         if (strcmp(temp->name, itemName) == 0) {
             temp->quantity += itemQuantity;
@@ -66,7 +67,7 @@ void inputData() {
     }
     printf("Barang telah masuk ke dalam database\n");
 }
-
+//delete seesuai nama
 void deleteName() {
     if (head == NULL) {
         printf("No such item inside the inventory\n");
@@ -74,7 +75,7 @@ void deleteName() {
     }
     char delName[MAX];
     printf("Enter the name of the item to delete: ");
-    scanf("%s", delName);
+    scanf("%[^\n]", delName);
 
     temp = head;
     while (temp != NULL && strcmp(temp->name, delName) != 0) {
@@ -99,6 +100,7 @@ void deleteName() {
     free(temp);
     printf("Item has been deleted successfully\n");
 }
+//implementasi stack
 void checkout(){
       if (head == NULL){
         printf("No such item inside the inventory\n");
@@ -113,6 +115,7 @@ void checkout(){
     free(temp);
     printf("Item has been deleted successfully\n");
 }
+//menu delete data
 void deleteData(){
        int c;  
     if (head == NULL){
@@ -138,6 +141,7 @@ void deleteData(){
     }
     
 }
+//display seluruh inventory berdasarkan barang yang paling baru di masukan
 void displayAll() {
     if (head == NULL) {
         printf("Inventory Data is empty\n");
@@ -151,6 +155,7 @@ void displayAll() {
         temp = temp->next;
     }
 }
+//mengdisplay data sesuai dengan nama yang dicari
 void displayName(){
     if (head == NULL) {
         printf("Inventory Data is empty\n");
@@ -160,7 +165,7 @@ void displayName(){
     temp = head;
     char ref[MAX];
     printf("Input the name of the item: ");
-    scanf("%s", ref);
+    scanf("%[^\n]", ref);
     printf("Name\t Quantity\t Weight\t Category\n");
     while (temp != NULL){
         if(strcmp(temp->name, ref) == 0){
@@ -169,6 +174,7 @@ void displayName(){
         temp = temp->next;
     }
 }
+//mengdisplay data yang kategorinya sama
 void displayCategory() {
     if (head == NULL) {
         printf("Inventory Data is empty\n");
@@ -178,7 +184,7 @@ void displayCategory() {
     temp = head;
     char ref[MAX];
     printf("Input the category of the item: ");
-    scanf("%s", ref);
+    scanf("%[^\n]", ref);
     printf("Name\t Quantity\t Weight\t Category\n");
     while (temp != NULL) {
         if (strcmp(temp->category, ref) == 0) {
@@ -187,6 +193,7 @@ void displayCategory() {
         temp = temp->next;
     }
 }
+//menu display
 void display(){
     int c;  
     if (head == NULL){
@@ -215,12 +222,11 @@ void display(){
             break;
     }
 }
-
+//melakukan export to csv (masih ada bug)
 void exportToCSV(){
     FILE *fp = fopen("Inventory.csv","w");
     if (fp == NULL){
         printf("failed to make a file\n");
-        return 0;
     }
     fprintf(fp, "Name,Quantity,Weight,Category\n");
     temp = head;
@@ -232,7 +238,7 @@ void exportToCSV(){
     fclose(fp);
     printf("Data has been exported to inventory.csv successfully.\n");
 }
-
+//main
 int main(){
   int m;
     do{

@@ -43,6 +43,7 @@ void inputData() {
     while (temp != NULL) {
         if (strcmp(temp->name, itemName) == 0) {
             temp->quantity += itemQuantity;
+            temp->weight += itemWeight;
             printf("Jumlah barang telah diperbarui.\n");
             return;
         }
@@ -223,7 +224,7 @@ void exportToCSV(){
     FILE *fp = fopen("Inventory.csv","w");
     if (fp == NULL){
         printf("failed to make a file\n");
-        return -1;
+        return 0;
     }
     fprintf(fp, "Name,Quantity,Weight,Category\n");
     temp = head;

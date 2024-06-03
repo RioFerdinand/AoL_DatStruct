@@ -58,15 +58,11 @@ void inputData() {
     newnode->prev = NULL;
     newnode->next = NULL;
 
-    if (head == NULL) {
+    if (head == NULL){
         head = newnode;
-    } else {
-        temp = head;
-        while (temp->next != NULL) {
-            temp = temp->next;
-        }
-        temp->next = newnode;
-        newnode->prev = temp;
+    }else{
+        newnode -> next = head;
+        head = newnode;
     }
     printf("Barang telah masuk ke dalam database\n");
 }

@@ -32,11 +32,11 @@ void inputData() {
 
     printf("Masukan Nama Barang: ");
     scanf("%[^\n]", itemName);
-    printf("Jumlah Barang: ");
+    printf("\nJumlah Barang: ");
     scanf("%d", &itemQuantity);
-    printf("Berat Barang: ");
+    printf("\nBerat Barang: ");
     scanf("%d", &itemWeight);
-    printf("Kategori Barang: ");
+    printf("\nKategori Barang: ");
     scanf("%[^\n]", itemCategory);
 
     temp = head;

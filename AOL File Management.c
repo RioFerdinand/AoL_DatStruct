@@ -20,6 +20,7 @@ void menu(){
     printf("2. View Data\n");
     printf("3. Delete Data\n");
     printf("4. Export Data to CSV\n");
+    printf("5. Import data from CSV\n");
     printf("0. Exit\n");
     printf("================================================\n");
 
@@ -31,12 +32,16 @@ void inputData() {
     char itemCategory[MAX];
 
     printf("Masukan Nama Barang: ");
+    getchar();
     scanf("%[^\n]", itemName);
     printf("\nJumlah Barang: ");
+    getchar();
     scanf("%d", &itemQuantity);
     printf("\nBerat Barang: ");
+    getchar();
     scanf("%d", &itemWeight);
     printf("\nKategori Barang: ");
+    getchar();
     scanf("%[^\n]", itemCategory);
 
     temp = head;
@@ -75,6 +80,7 @@ void deleteName() {
     }
     char delName[MAX];
     printf("Enter the name of the item to delete: ");
+    getchar();
     scanf("%[^\n]", delName);
 
     temp = head;
@@ -165,6 +171,7 @@ void displayName(){
     temp = head;
     char ref[MAX];
     printf("Input the name of the item: ");
+    getchar();
     scanf("%[^\n]", ref);
     printf("Name\t\t Quantity\t\t Weight\t\t Category\n");
     while (temp != NULL){
@@ -206,6 +213,7 @@ void display(){
     printf("3. View by category\n");
     printf("Enter your input: ");
     scanf("%d", &c);
+    getchar();
     
     switch(c){
         case 1:
@@ -221,6 +229,34 @@ void display(){
             printf("Invalid Choice\n");
             break;
     }
+}
+void importFromCSV() {
+    FILE *fp = fopen("Inventory.csv", "r");
+    if (fp == NULL) {
+        printf("Failed to open file\n");
+        return;
+    }
+    
+    char buffer[MAX];
+    fgets(buffer, MAX, fp); // Skip the header line
+
+    while (fgets(buffer, MAX, fp)) {
+        newnode = (struct data*)malloc(sizeof(struct data));
+        sscanf(buffer, "%[^,],%d,%d,%[^,]", newnode->name, &newnode->quantity, &newnode->weight, newnode->category);
+        newnode->prev = NULL;
+        newnode->next = NULL;
+
+        if (head == NULL) {
+            head = newnode;
+        } else {
+            newnode->next = head;
+            head->prev = newnode;
+            head = newnode;
+        }
+    }
+
+    fclose(fp);
+    printf("Data has been imported from Inventory.csv successfully.\n");
 }
 //melakukan export to csv (masih ada bug)
 void exportToCSV(){
@@ -259,6 +295,9 @@ int main(){
            break;
         case 4:
             exportToCSV();
+            break;
+        case 5:
+            importToCSV();
             break;
         case 0:
             printf("BYE BYE!\n");

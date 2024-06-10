@@ -297,7 +297,7 @@ int main(){
             exportToCSV();
             break;
         case 5:
-            importToCSV();
+            importFromCSV();
             break;
         case 0:
             printf("BYE BYE!\n");

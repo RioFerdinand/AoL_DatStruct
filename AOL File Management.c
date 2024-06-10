@@ -155,9 +155,9 @@ void displayAll() {
     }
 
     temp = head;
-    printf("Name\t\tQuantity\t\tWeight\t\tCategory\n");
+    printf("%-20s %-15s %-15s %-15s\n", "Name", "Quantity", "Weight", "Category");
     while (temp != NULL) {
-        printf("%s\t\t%d\t\t%d KG\t\t%s\n", temp->name, temp->quantity, temp->weight, temp->category);
+        printf("%-20s %-15d %-15d %-15s\n", temp->name, temp->quantity, temp->weight, temp->category);
         temp = temp->next;
     }
 }
@@ -171,12 +171,12 @@ void displayName(){
     temp = head;
     char ref[MAX];
     printf("Input the name of the item: ");
-    getchar();
     scanf("%[^\n]", ref);
-    printf("Name\t\t Quantity\t\t Weight\t\t Category\n");
+    getchar();
+    printf("%-20s %-15s %-15s %-15s\n", "Name", "Quantity", "Weight", "Category");
     while (temp != NULL){
         if(strcmp(temp->name, ref) == 0){
-            printf("%s\t %d\t\t %d KG\t %s\n", temp->name, temp->quantity, temp->weight, temp->category);
+            printf("%-20s %-15d %-15d %-15s\n", temp->name, temp->quantity, temp->weight, temp->category);
         }
         temp = temp->next;
     }
@@ -192,10 +192,11 @@ void displayCategory() {
     char ref[MAX];
     printf("Input the category of the item: ");
     scanf("%[^\n]", ref);
-    printf("Name\t\t Quantity\t\t Weight\t\t Category\n");
+    getchar();
+    printf("%-20s %-15s %-15s %-15s\n", "Name", "Quantity", "Weight", "Category");
     while (temp != NULL) {
         if (strcmp(temp->category, ref) == 0) {
-            printf("%s\t\t %d\t\t %d KG\t\t %s\n", temp->name, temp->quantity, temp->weight, temp->category);
+            printf("%-20s %-15d %-15d %-15s\n", temp->name, temp->quantity, temp->weight, temp->category);
         }
         temp = temp->next;
     }

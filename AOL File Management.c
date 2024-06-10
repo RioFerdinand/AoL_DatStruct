@@ -27,12 +27,12 @@ void gudangTitle(){
 void menu(){
     gudangTitle();
     printf("================Warehouse Inventory=============\n");
-    printf("1. Input Data\n");
-    printf("2. View Data\n");
-    printf("3. Delete Data\n");
-    printf("4. Export Data to CSV\n");
-    printf("5. Import data from CSV\n");
-    printf("0. Exit\n");
+    printf("==1. Input Data                               ==\n");
+    printf("==2. View Data                                ==\n");
+    printf("==3. Delete Data                              ==\n");
+    printf("==4. Export Data to CSV                       ==\n");
+    printf("==5. Import data from CSV                     ==\n");
+    printf("==0. Exit                                     ==\n");
     printf("================================================\n");
 }
 
@@ -129,7 +129,9 @@ void checkout(){
         head->prev = NULL;
     }
     free(temp);
-    printf("Item has been deleted successfully\n");
+    printf("================================================\n");
+    printf("=======Item has been deleted successfully=======\n");
+    printf("================================================\n");
 }
 //menu delete data
 void deleteData(){
@@ -138,9 +140,11 @@ void deleteData(){
         printf("Inventory Data is empty\n");
         return;
     }
+    printf("================================================\n");
     printf("Select view method: \n");
     printf("1. Check out\n");
     printf("2. Delete by name\n");
+    printf("================================================\n");
     printf("Enter your input: ");
     scanf("%d", &c);
     

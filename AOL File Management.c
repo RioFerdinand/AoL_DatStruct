@@ -14,7 +14,18 @@ struct data {
 
 struct data *head = NULL, *newnode, *temp;
 //Menu 
+void gudangTitle(){
+    printf("┏━━━┓━━━━━━┏┓━━━━━━━━━━━━━━━━━┏━━━┓━━━━━━━━━━━━━━━━━\n");
+    printf("┃┏━┓┃━━━━━━┃┃━━━━━━━━━━━━━━━━━┃┏━┓┃━━━━━━━━━━┏┓━━━━━\n");
+    printf("┃┃━┗┛┏┓┏┓┏━┛┃┏━━┓━┏━┓━┏━━┓━━━━┃┃━┗┛┏━━┓━┏━┓━━┗┛┏━━┓━\n");
+    printf("┃┃┏━┓┃┃┃┃┃┏┓┃┗━┓┃━┃┏┓┓┃┏┓┃━━━━┃┃┏━┓┗━┓┃━┃┏┓┓━┏┓┗━┓┃━\n");
+    printf("┃┗┻━┃┃┗┛┃┃┗┛┃┃┗┛┗┓┃┃┃┃┃┗┛┃━━━━┃┗┻━┃┃┗┛┗┓┃┃┃┃━┃┃┃┗┛┗┓\n");
+    printf("┗━━━┛┗━━┛┗━━┛┗━━━┛┗┛┗┛┗━┓┃━━━━┗━━━┛┗━━━┛┗┛┗┛━┃┃┗━━━┛\n");
+    printf("━━━━━━━━━━━━━━━━━━━━━━┏━┛┃━━━━━━━━━━━━━━━━━━┏┛┃━━━━━\n");
+    printf("━━━━━━━━━━━━━━━━━━━━━━┗━━┛━━━━━━━━━━━━━━━━━━┗━┛━━━━━\n");
+}
 void menu(){
+    gudangTitle();
     printf("================Warehouse Inventory=============\n");
     printf("1. Input Data\n");
     printf("2. View Data\n");
@@ -23,7 +34,6 @@ void menu(){
     printf("5. Import data from CSV\n");
     printf("0. Exit\n");
     printf("================================================\n");
-
 }
 
 void inputData() {
@@ -167,7 +177,7 @@ void displayName(){
         printf("Inventory Data is empty\n");
         return;
     }
-
+ 
     temp = head;
     char ref[MAX];
     printf("Input the name of the item: ");

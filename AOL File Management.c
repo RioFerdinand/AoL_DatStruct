@@ -133,6 +133,58 @@ void checkout(){
     printf("=======Item has been deleted successfully=======\n");
     printf("================================================\n");
 }
+void checkoutByName() {
+    char ref[MAX];
+    printf("Input the name of the item you wish to checkout: ");
+    getchar();  // Consume the newline character left by the previous input
+    scanf("%[^\n]", ref);
+    if (head == NULL) {
+        printf("There are no data in the inventory\n");
+        return;
+    }
+    temp = head;
+    while (temp != NULL && strcmp(temp->name, ref) != 0) {
+        temp = temp->next;
+    }
+    if (temp != NULL && strcmp(temp->name, ref) == 0) {
+        printf("Data is found, do you want to delete all(1) or delete some(2)? ");
+        int c;
+        scanf("%d", &c);
+        switch (c) {
+            case 1:
+                if (temp->prev != NULL) {
+                    temp->prev->next = temp->next;
+                } else {
+                    head = temp->next;
+                }
+
+                if (temp->next != NULL) {
+                    temp->next->prev = temp->prev;
+                }
+                free(temp);
+                printf("Item has been deleted successfully\n");
+                break;
+            case 2:
+                printf("How much of the data do you want to delete?\n");
+                printf("There are currently %d of %s\n", temp->quantity, temp->name);
+                int r;
+                printf(">>");
+                scanf("%d", &r);
+                if (r <= temp->quantity) {
+                    temp->quantity -= r;
+                    printf("Data is updated\n");
+                } else {
+                    printf("Not enough items to delete\n");
+                }
+                break;
+            default:
+                printf("Invalid choice\n");
+                break;
+        }
+    } else {
+        printf("Item not found\n");
+    }
+}
 //menu delete data
 void deleteData(){
        int c;  
@@ -144,6 +196,7 @@ void deleteData(){
     printf("Select view method: \n");
     printf("1. Check out\n");
     printf("2. Delete by name\n");
+    printf("3. Checkout by name\n");
     printf("================================================\n");
     printf("Enter your input: ");
     scanf("%d", &c);
@@ -154,6 +207,9 @@ void deleteData(){
             break;
         case 2:
             deleteName();
+            break;
+        case 3:
+            checkoutName();
             break;
         default:
             printf("Invalid Choice\n");

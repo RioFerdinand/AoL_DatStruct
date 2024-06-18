@@ -205,15 +205,12 @@ void deleteData(){
     switch(c){
         case 1:
             checkout();
-            system("cls");
             break;
         case 2:
             deleteName();
-            system("cls");
             break;
         case 3:
             checkoutByName();
-            system("cls");
             break;
         default:
             printf("Invalid Choice\n");
@@ -293,15 +290,12 @@ void display(){
     switch(c){
         case 1:
             displayAll();
-            system("cls");
             break;
         case 2:
             displayName();
-            system("cls");
             break;
         case 3:
             displayCategory();
-            system("cls");
             break;
         default:
             printf("Invalid Choice\n");
@@ -364,27 +358,21 @@ int main(){
     switch(m) {
         case 1:
            inputData();
-           system("cls");
            break;
         case 2:
            display();
-           system("cls");
            break;
         case 3:
            deleteData();
-           system("cls");
            break;
         case 4:
             exportToCSV();
-            system("cls");
             break;
         case 5:
             importFromCSV();
-            system("cls");
             break;
         case 0:
             printf("BYE BYE!\n");
-            system("cls");
             break;
         default:
            printf("Waduh ga ada pilihannya cok\n");

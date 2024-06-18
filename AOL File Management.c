@@ -25,6 +25,7 @@ void gudangTitle(){
 }
 
 void menu(){
+    system("cls");
     gudangTitle();
     printf("================Warehouse Inventory=============\n");
     printf("==1. Input Data                               ==\n");
